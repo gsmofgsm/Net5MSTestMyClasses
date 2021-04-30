@@ -9,11 +9,15 @@ namespace MyClassesTest
     {
         private const string BAD_FILE_NAME = @"C:\Users\qing.ma\bogus.txt";
 
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         public void FileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
             bool fromCall;
+
+            TestContext.WriteLine(@"Checking File C:\Users\qing.ma\.viminfo");
 
             fromCall = fp.FileExists(@"C:\Users\qing.ma\.viminfo");
 
@@ -25,6 +29,8 @@ namespace MyClassesTest
         {
             FileProcess fp = new FileProcess();
             bool fromCall;
+
+            TestContext.WriteLine("Checking File " + BAD_FILE_NAME);
 
             fromCall = fp.FileExists(BAD_FILE_NAME);
 
