@@ -17,4 +17,19 @@
     <ProjectReference Include="..\MyClasses\MyClasses.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="MyClasses.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MyClasses.runsettings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MyClasses.runsettings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MyClasses.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -7,9 +7,22 @@ namespace MyClassesTest
     [TestClass]
     public class FileProcessTest
     {
+        protected string _GoodFileName;
         private const string BAD_FILE_NAME = @"C:\Users\qing.ma\bogus.txt";
 
         public TestContext TestContext { get; set; }
+
+        protected void SetGoodFileName()
+        {
+            _GoodFileName = TestContext.Properties["GoodFileName"].ToString();
+
+            if (_GoodFileName.Contains("[AppPath]"))
+            {
+                _GoodFileName = _GoodFileName.Replace("[AppPath]",
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+                // the file path will be C:\Users\qing.ma\AppData\Roaming\TestFile.txt
+            }
+        }
 
         [TestMethod]
         public void FileNameDoesExists()
@@ -17,9 +30,11 @@ namespace MyClassesTest
             FileProcess fp = new FileProcess();
             bool fromCall;
 
-            TestContext.WriteLine(@"Checking File C:\Users\qing.ma\.viminfo");
+            SetGoodFileName();
 
-            fromCall = fp.FileExists(@"C:\Users\qing.ma\.viminfo");
+            TestContext.WriteLine("Checking File " + _GoodFileName);
+
+            fromCall = fp.FileExists(_GoodFileName);
 
             Assert.IsTrue(fromCall);
         }
