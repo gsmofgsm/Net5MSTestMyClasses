@@ -60,6 +60,9 @@ namespace MyClassesTest
 
         [TestMethod]
         [Description("Check to see if a file exists.")]
+        [Owner("QingMa")]
+        [Priority(1)]
+        [TestCategory("NoException")]
         public void FileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
@@ -74,6 +77,9 @@ namespace MyClassesTest
 
         [TestMethod]
         [Description("Check to see if a file does not exist.")]
+        [Owner("QingMa")]
+        [Priority(2)]
+        [TestCategory("NoException")]
         public void FileNameDoesNotExist()
         {
             FileProcess fp = new FileProcess();
@@ -89,6 +95,9 @@ namespace MyClassesTest
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Check for a thrown ArgumentNullException using ExpectedException attribute.")]
+        [Owner("Mas")]
+        [Priority(3)]
+        [TestCategory("Exception")]
         public void FileNameNullOrEmpty_UsingAttribute()
         {
             FileProcess fp = new FileProcess();
