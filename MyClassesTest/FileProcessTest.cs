@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyClasses;
+using System;
 
 namespace MyClassesTest
 {
@@ -9,25 +10,50 @@ namespace MyClassesTest
         [TestMethod]
         public void FileNameDoesExists()
         {
-            Assert.Inconclusive();
+            FileProcess fp = new FileProcess();
+            bool fromCall;
+
+            fromCall = fp.FileExists(@"C:\Users\qing.ma\.viminfo");
+
+            Assert.IsTrue(fromCall);
         }
 
         [TestMethod]
         public void FileNameDoesNotExist()
         {
-            Assert.Inconclusive();
+            FileProcess fp = new FileProcess();
+            bool fromCall;
+
+            fromCall = fp.FileExists(@"C:\Users\qing.ma\bogus.txt");
+
+            Assert.IsFalse(fromCall);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void FileNameNullOrEmpty_UsingAttribute()
         {
-            Assert.Inconclusive();
+            FileProcess fp = new FileProcess();
+            fp.FileExists("");
         }
 
         [TestMethod]
         public void FileNameNullOrEmpty_UsingTryCatch()
         {
-            Assert.Inconclusive();
+            FileProcess fp = new FileProcess();
+
+            try
+            {
+                fp.FileExists("");
+            }
+            catch (ArgumentNullException)
+            {
+                // Test was a success
+                return;
+            }
+
+            // Fail the test
+            Assert.Fail("Call to FileExists() did NOT throw an ArgumentNullException");
         }
     }
 }
