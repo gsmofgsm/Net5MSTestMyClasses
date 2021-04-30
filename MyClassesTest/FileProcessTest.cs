@@ -6,24 +6,9 @@ using System.IO;
 namespace MyClassesTest
 {
     [TestClass]
-    public class FileProcessTest
+    public class FileProcessTest : TestBase
     {
-        protected string _GoodFileName;
         private const string BAD_FILE_NAME = @"C:\Users\qing.ma\bogus.txt";
-
-        public TestContext TestContext { get; set; }
-
-        protected void SetGoodFileName()
-        {
-            _GoodFileName = TestContext.Properties["GoodFileName"].ToString();
-
-            if (_GoodFileName.Contains("[AppPath]"))
-            {
-                _GoodFileName = _GoodFileName.Replace("[AppPath]",
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-                // the file path will be C:\Users\qing.ma\AppData\Roaming\TestFile.txt
-            }
-        }
 
         [TestMethod]
         public void FileNameDoesExists()
