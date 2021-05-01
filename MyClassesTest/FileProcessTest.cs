@@ -63,6 +63,7 @@ namespace MyClassesTest
         [Owner("QingMa")]
         [Priority(1)]
         [TestCategory("NoException")]
+        //[Ignore]
         public void FileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
@@ -74,6 +75,13 @@ namespace MyClassesTest
 
             Assert.IsTrue(fromCall);
         }
+
+        //[TestMethod]
+        //[Timeout(3000)]
+        //public void SimulateTimeout()
+        //{
+        //    System.Threading.Thread.Sleep(4000);
+        //}
 
         [TestMethod]
         [Description("Check to see if a file does not exist.")]
