@@ -163,6 +163,17 @@ namespace MyClassesTest
         }
 
         [TestMethod]
+        public void AreSameTest()
+        {
+            FileProcess x = new FileProcess();
+            //FileProcess y = new FileProcess();
+            //Assert.AreNotSame(x, y);
+
+            FileProcess y = x;
+            Assert.AreSame(x, y);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Check for a thrown ArgumentNullException using ExpectedException attribute.")]
         [Owner("Mas")]
