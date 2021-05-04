@@ -30,7 +30,7 @@ namespace MyClassesTest
 
             WriteDescription(this.GetType());
 
-            if (TestContext.TestName.StartsWith("FileNameDoesExists"))
+            if (TestContext.TestName.StartsWith("FileNameDoesExist"))
             {
                 SetGoodFileName();
                 if (!string.IsNullOrEmpty(_GoodFileName))
@@ -92,7 +92,7 @@ namespace MyClassesTest
         [Priority(1)]
         [TestCategory("NoException")]
         //[Ignore]
-        public void FileNameDoesExists()
+        public void FileNameDoesExist()
         {
             FileProcess fp = new FileProcess();
             bool fromCall;
@@ -126,6 +126,20 @@ namespace MyClassesTest
             fromCall = fp.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
+        }
+
+        [TestMethod]
+        public void FileNameDoesExistSimpleMessage()
+        {
+            FileProcess fp = new FileProcess();
+            bool fromCall;
+
+            fromCall = fp.FileExists(_GoodFileName);
+
+            //Assert.IsFalse(fromCall,
+            //    "File " + _GoodFileName + " Does Not Exist.");
+            Assert.IsFalse(fromCall,
+                "File {0} Does Not Exist.", _GoodFileName);
         }
 
         [TestMethod]
