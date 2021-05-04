@@ -143,6 +143,26 @@ namespace MyClassesTest
         }
 
         [TestMethod]
+        public void AreEqualTest()
+        {
+            string str1 = "Paul";
+            //string str2 = "Paul";
+            //Assert.AreEqual(str1, str2);
+            string str2 = "paul";
+
+            Assert.AreEqual(str1, str2, true);  // case insensitive
+        }
+
+        [TestMethod]
+        public void AreNotEqualTest()
+        {
+            string str1 = "Paul";
+            string str2 = "John";
+
+            Assert.AreNotEqual(str1, str2);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Description("Check for a thrown ArgumentNullException using ExpectedException attribute.")]
         [Owner("Mas")]
